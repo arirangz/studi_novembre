@@ -1,15 +1,27 @@
 <?php
 
-$articles = [
-    ["title" => "PHP vs Python", "description" => "Lorem", "image" => "1-php-vs-python.jpg"],
-    ["title" => "React et React Native", "description" => "Lorem", "image" => "2-react-vs-react-native.jpg"],
-    ["title" => "Quels outils pour le DevOps", "description" => "Lorem", "image" => "3-devops.png"],
-];
+function getArticleById(PDO $pdo, int $id) {
+    $query = $pdo->prepare("SELECT * FROM articles WHERE id = :id");
+    $query->bindValue(":id", $id, PDO::PARAM_INT);
+    $query->execute();
+    return $query->fetch(PDO::FETCH_ASSOC);
+}
 
+function getArticles(PDO $pdo, int $limit = null) {
 
-function getArticleById(array $articles, int $id) {
-    if (isset($articles[$id])) {
-        return $articles[$id];
+    $sql = "SELECT * FROM articles ORDER BY id DESC";
+
+    if ($limit) {
+        $sql .= " LIMIT :limit";
     }
-    return false;
+
+    $query = $pdo->prepare($sql);
+
+    if ($limit) {
+        $query->bindValue(":limit", $limit, PDO::PARAM_INT);
+    }
+
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
 }

@@ -52,6 +52,28 @@
     <?php } ?>
 
 
+    <?php
+    // LES FONCTIONS
+    function calculSurface(float $largeur, float $longeur):float
+    {
+        return $largeur * $longeur;
+    }
+
+    $longeurCuisine = 4.5;
+    $largeurCuisine = 2;
+    $surfaceCuisine = calculSurface($largeurCuisine, $longeurCuisine);
+    
+
+    $longeurChambre = 4;
+    $largeurChambre = 5;
+    $surfaceChambre = calculSurface($largeurChambre, $longeurChambre);
+
+    $surfaceTotal = $surfaceCuisine + $surfaceChambre;
+    echo $surfaceTotal;
+
+    ?>
+
+
 
 </body>
 
