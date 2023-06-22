@@ -6,6 +6,7 @@ require_once 'lib/user.php';
 
 require_once 'templates/header.php';
 
+
 $errors = [];
 $messages = [];
 
@@ -19,7 +20,6 @@ if (isset($_POST['loginUser'])) {
         if ($user['role'] === 'admin') {
             header('location: admin/index.php');
         } else {
-
             header('location: index.php');
         }
     } else {

@@ -1,8 +1,8 @@
 <?php
+require_once __DIR__ . "/../lib/config.php";
 require_once __DIR__ . "/../lib/session.php";
 adminOnly();
 
-require_once __DIR__ . "/../lib/config.php";
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/article.php";
@@ -42,6 +42,8 @@ if (isset($_POST['saveArticle'])) {
         if ($checkImage !== false) {
             $fileName = slugify(basename($_FILES["file"]["name"]));
             $fileName = uniqid() . '-' . $fileName;
+
+
 
             /* On déplace le fichier uploadé dans notre dossier upload, dirname(__DIR__) 
                 permet de cibler le dossier parent car on se trouve dans admin

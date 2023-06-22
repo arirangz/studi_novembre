@@ -1,8 +1,8 @@
 <?php
+require_once __DIR__ . "/../lib/config.php";
 require_once __DIR__ . "/../lib/session.php";
 adminOnly();
 
-require_once __DIR__ . "/../lib/config.php";
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/article.php";
 require_once __DIR__ . "/templates/header.php";
@@ -12,11 +12,11 @@ if (isset($_GET['page'])) {
 } else {
   $page = 1;
 }
-$articles = getArticles($pdo, 10, $page);
+$articles = getArticles($pdo, _ADMIN_ITEM_PER_PAGE_, $page);
 
 $totalArticles = getTotalArticles($pdo);
 
-$totalPages = ceil($totalArticles / 10);
+$totalPages = ceil($totalArticles / _ADMIN_ITEM_PER_PAGE_);
 
 ?>
 
@@ -40,8 +40,8 @@ $totalPages = ceil($totalArticles / 10);
       <tr>
         <th scope="row"><?= $article["id"]; ?></th>
         <td><?= $article["title"]; ?></td>
-        <td><a href="article?id=<?= $article['id'] ?>">Modifier</a>
-          | <a href="article_delete?id=<?= $article['id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')">Supprimer</a></td>
+        <td><a href="article.php?id=<?= $article['id'] ?>">Modifier</a>
+          | <a href="article_delete.php?id=<?= $article['id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')">Supprimer</a></td>
       </tr>
     <?php } ?>
   </tbody>

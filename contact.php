@@ -1,4 +1,8 @@
-<?php require_once __DIR__."/templates/header.php"; ?>
+<?php 
+require_once __DIR__."/lib/config.php";
+require_once __DIR__."/templates/header.php"; 
+?>
+
 
 <?php 
     $messages = [];
@@ -12,12 +16,12 @@
             $errors[] = "Le message ne doit pas être vide";
         }
         if (!$errors) {
-            $to = "ky9.test@gmail.com";
+            $to = _APP_EMAIL_;
             $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
             $subject = "[TechTrendz] Formulaire de contact";
             $emailContent = "Email : $email<br>"
                         ."Message : <br>".nl2br(htmlentities($_POST["message"]));
-            $headers = "From: ky9.test@gmail.com" . "\r\n" .
+            $headers = "From: "._APP_EMAIL_ . "\r\n" .
                         "MIME-Version: 1.0" . "\r\n" .
                         "Content-type: text/html; charset=utf-8";
     

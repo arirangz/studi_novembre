@@ -1,6 +1,6 @@
 <?php
 
-function getArticleById(PDO $pdo, int $id):array
+function getArticleById(PDO $pdo, int $id):array|bool
 {
     $query = $pdo->prepare("SELECT * FROM articles WHERE id = :id");
     $query->bindValue(":id", $id, PDO::PARAM_INT);
@@ -8,7 +8,7 @@ function getArticleById(PDO $pdo, int $id):array
     return $query->fetch(PDO::FETCH_ASSOC);
 }
 
-function getArticles(PDO $pdo, int $limit = null, int $page = null):array
+function getArticles(PDO $pdo, int $limit = null, int $page = null):array|bool
 {
     $sql = "SELECT * FROM articles ORDER BY id DESC";
 
@@ -34,7 +34,7 @@ function getArticles(PDO $pdo, int $limit = null, int $page = null):array
     return $result;
 }
 
-function getTotalArticles(PDO $pdo):int
+function getTotalArticles(PDO $pdo):int|bool
 {
     $sql = "SELECT COUNT(*) as total FROM articles";
     $query = $pdo->prepare($sql);
