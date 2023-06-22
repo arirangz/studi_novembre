@@ -1,4 +1,5 @@
 <?php
+require __DIR__.'/lib/config.php';
 require __DIR__.'/lib/session.php';
 //Prévient les attaques de fixation de session
 session_regenerate_id(true);
