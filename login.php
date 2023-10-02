@@ -25,7 +25,13 @@ if (isset($_POST['loginUser'])) {
 ?>
     <h1>Login</h1>
 
-    <?php // @todo afficher les erreurs ?>
+    <?php // @todo afficher les erreurs avec la structure suivante :
+        /*
+        <div class="alert alert-danger" role="alert">
+            Utilisatuer ou mot de passe incorrect
+        </div>
+        */
+    ?>
 
     <form method="POST">
         <div class="mb-3">

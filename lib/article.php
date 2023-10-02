@@ -1,3 +1,4 @@
+
 <?php
 
 function getArticleById(PDO $pdo, int $id):array|bool
