@@ -10,37 +10,23 @@ require_once 'templates/header.php';
 $errors = [];
 $messages = [];
 
+// Si le formulaire a été souis
 if (isset($_POST['loginUser'])) {
-
+    //@todo appeler une méthode verifyUserLoginPassword qui retourne false ou retourne un tableau avec l'utisateur
     $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
 
-    if ($user) {
-        session_regenerate_id(true);
-        $_SESSION['user'] = $user;
-        if ($user['role'] === 'admin') {
-            header('location: admin/index.php');
-        } else {
-            header('location: index.php');
-        }
-    } else {
-        $errors[] = 'Email ou mot de passe incorrect';
-    }
+    /* @todo si on récupère un utilisateur, alors on stocke l'utilisateur dans la session
+        et on redirige l'utilisateur soit vers l'admin (si role admin) soit vers l'accueil
+        sinon on affiche une erreur "Email ou mot de passe incorrect"
+    */
 
   }
 
 ?>
     <h1>Login</h1>
 
-    <?php foreach ($messages as $message) { ?>
-        <div class="alert alert-success" role="alert">
-            <?= $message; ?>
-        </div>
-    <?php } ?>
-    <?php foreach ($errors as $error) { ?>
-        <div class="alert alert-danger" role="alert">
-            <?= $error; ?>
-        </div>
-    <?php } ?>
+    <?php // @todo afficher les erreurs ?>
+
     <form method="POST">
         <div class="mb-3">
         <div class="mb-3">

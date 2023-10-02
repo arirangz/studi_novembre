@@ -10,29 +10,18 @@ $errors = [];
 $messages = [];
 if (isset($_POST['addUser'])) {
     /*
-        @todo ajouter la vérification sur les champs
+        @todo On appelle addUser pour ajouter l'utilisateur
+        si true a été retourné, on affiche un message "Merci pour votre inscription"
+        sinon on affiche une erreur "Une erreur s'est produite lors de votre inscription"
     */
-    $res = addUser($pdo, $_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['password']);
-    if ($res) {
-        $messages[] = 'Merci pour votre inscription';
-    } else {
-        $errors[] = 'Une erreur s\'est produite lors de votre inscription';
-    }
 }
 
 ?>
     <h1>Inscription</h1>
 
-    <?php foreach ($messages as $message) { ?>
-        <div class="alert alert-success" role="alert">
-            <?= $message; ?>
-        </div>
-    <?php } ?>
-    <?php foreach ($errors as $error) { ?>
-        <div class="alert alert-danger" role="alert">
-            <?= $error; ?>
-        </div>
-    <?php } ?>
+
+    <?php // @todo afficher les erreurs ?>
+
     <form method="POST">
         <div class="mb-3">
             <label for="first_name" class="form-label">Prénom</label>

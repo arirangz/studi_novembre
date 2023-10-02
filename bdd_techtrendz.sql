@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 21 juin 2023 à 09:00
+-- Généré le : mar. 26 sep. 2023 à 15:56
 -- Version du serveur : 5.7.36
 -- Version de PHP : 8.0.13
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `studi_techtrendz`
+-- Base de données : `keyce_techtrendz_dev`
 --
 
 -- --------------------------------------------------------
@@ -133,14 +133,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `last_name` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `first_name`, `last_name`, `role`) VALUES
-(3, 'test2', 'test2', 'test2', 'test2', 'test2');
+(3, 'admin@test.com', '$2y$10$iwpzJ3Q2im1Ci80YkplP7.nzh5hYay.GRYR7mLkwpqJ5F3rPYVkqC', 'Admin', 'Admin', 'admin'),
+(4, 'user@test.com', '$2y$10$iwpzJ3Q2im1Ci80YkplP7.nzh5hYay.GRYR7mLkwpqJ5F3rPYVkqC', 'John', 'Doe', 'user');
 
 --
 -- Contraintes pour les tables déchargées

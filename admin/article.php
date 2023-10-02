@@ -33,7 +33,7 @@ if (isset($_GET['id'])) {
 
 if (isset($_POST['saveArticle'])) {
 
-    //@todo gérer la gestion des erreurs sur les champs (champ vide etc.)
+    //@todo Amélioration : gérer la gestion des erreurs sur les champs (champ vide etc.)
     
     $fileName = null;
     // Si un fichier est envoyé
